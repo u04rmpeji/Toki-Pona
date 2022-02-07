@@ -8,7 +8,7 @@ def generator(amount) -> list[str]:
     consontants = ['p', 't', 'k', 's', 'm', 'n', 'l', 'w', 'j']
     vowels = ['a', 'e', 'i', 'o', 'u']
     forbidden = ['ti', 'ji', 'wo', 'wu']
-    with open('Toki Pona/TokiPonaWords.txt', 'r') as f:
+    with open('TokiPonaWords.txt', 'r') as f:
         words = f.read().splitlines()
     
     def random_syllable(ends_in: str = None) -> str:
@@ -21,7 +21,7 @@ def generator(amount) -> list[str]:
                     return syllable
     names = []
     for _ in range(amount):
-        while True: # make sure the name is not a official word also not duplicated
+        while True: # make sure the name is not a official word or duplicated
             name = ''
             start_with_vowel = choice([True, False])
             if start_with_vowel:
@@ -42,6 +42,6 @@ def generator(amount) -> list[str]:
     
     return sorted(names)
         
-with open('Toki Pona/output.txt', 'w') as f:
+with open('Output.txt', 'w') as f:
     for name in generator(100):
         f.write(name + '\n')
